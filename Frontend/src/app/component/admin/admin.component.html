@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="text-centre">
+      <h2>Admin's Profile</h2>
+      <button class="btn btn-primary" routerLink="/add-retailer">
+        Add Retailer
+      </button>
+    </div>
+  </div>
+</div>
+
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th>Retailer Id</th>
+      <th>Retailer Name</th>
+      <th>delete Retailer</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of RetailerList">
+    <tr>
+      <td>{{ item.r_id }}</td>
+      <td>{{ item.name }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="delete(item.r_id)">
+          delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

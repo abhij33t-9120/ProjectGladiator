@@ -1,0 +1,391 @@
+<ngb-accordion [closeOthers]="true" activeIds="static-1">
+  <ngb-panel id="static-1" title="Shiping Address">
+    <ng-template ngbPanelContent>
+      <div class="row">
+        <div class="col-md-8 mb-4">
+          <div class="card mb-4">
+            <div class="card-header py-3">
+              <h5 class="mb-0">Biling details</h5>
+            </div>
+            <div class="card-body">
+              <form>
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row mb-4">
+                  <div class="col">
+                    <div class="form-outline">
+                      <input
+                        name="first"
+                        type="text"
+                        id="form7Example1"
+                        class="form-control"
+                        [(ngModel)]="AddressDetails.first"
+                        [required]="true"
+                        #first="ngModel"
+                      />
+                      <label class="form-label">First name</label><br />
+                      <small
+                        class="text-danger"
+                        [class.d-none]="first.valid || first.untouched"
+                      >
+                        First Name is required.</small
+                      >
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-outline">
+                      <input
+                        name="last"
+                        type="text"
+                        id="form7Example2"
+                        class="form-control"
+                        required
+                        [(ngModel)]="AddressDetails.last"
+                        #last="ngModel"
+                      />
+
+                      <label class="form-label" for="form7Example2"
+                        >Last name</label
+                      >
+                      <br />
+                      <small
+                        class="text-danger"
+                        [class.d-none]="last.valid || last.untouched"
+                      >
+                        Last Name is required.</small
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Text input -->
+                <div class="form-outline mb-4">
+                  <input type="text" id="form7Example3" class="form-control" />
+                  <label class="form-label" for="form7Example3"
+                    >Company name</label
+                  >
+                </div>
+
+                <!-- Text input -->
+                <div class="form-outline mb-4">
+                  <input
+                    name="Address"
+                    #address="ngModel"
+                    [(ngModel)]="AddressDetails.address"
+                    required
+                    type="text"
+                    id="form7Example4"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="form7Example4">Address</label>
+                  <br />
+                  <small
+                    class="text-danger"
+                    [class.d-none]="address.valid || address.untouched"
+                  >
+                    Address is required.</small
+                  >
+                </div>
+
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input
+                    email
+                    name="email"
+                    [(ngModel)]="AddressDetails.email"
+                    #email="ngModel"
+                    required
+                    type="email"
+                    id="form7Example5"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="form7Example5">Email</label>
+                  <br />
+                  <small
+                    class="text-danger"
+                    [class.d-none]="email.valid || email.untouched"
+                    >Email is required.
+                  </small>
+                  <small class="text-danger" *ngIf="email.errors?.email">
+                    Primary Email not valid.
+                  </small>
+                </div>
+
+                <!-- Number input -->
+                <div class="form-outline mb-4">
+                  <input
+                    name="phone"
+                    [(ngModel)]="AddressDetails.phone"
+                    type="text"
+                    id="form7Example6"
+                    class="form-control"
+                    required
+                    maxlength="10"
+                    pattern="^\d{10}$"
+                    #phone="ngModel"
+                    [class.is-invalid]="phone.invalid && phone.touched"
+                    (keypress)="validateNo($event)"
+                  />
+                  <label class="form-label" for="form7Example6">Phone</label>
+                  <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+                    <small class="text-danger" *ngIf="phone.errors['required']"
+                      >Phone number is required.</small
+                    >
+                    <small class="text-danger" *ngIf="phone.errors['pattern']"
+                      >Phone number must be 10 digits.</small
+                    >
+                  </div>
+                </div>
+
+                <!-- Message input -->
+                <div class="form-outline mb-4">
+                  <textarea
+                    class="form-control"
+                    id="form7Example7"
+                    rows="4"
+                  ></textarea>
+                  <label class="form-label" for="form7Example7"
+                    >Additional information</label
+                  >
+                </div>
+
+                <!-- Checkbox -->
+                <div class="form-check d-flex justify-content-center mb-2">
+                  <input
+                    class="form-check-input me-2"
+                    type="checkbox"
+                    value=""
+                    id="form7Example8"
+                    checked
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel id="static-2">
+    <ng-template ngbPanelTitle>
+      <span>Payment Details</span>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <div class="padding">
+        <div class="row">
+          <div class="container-fluid d-flex justify-content-center">
+            <div class="col-sm-8 col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <span>CREDIT/DEBIT CARD PAYMENT</span>
+                    </div>
+
+                    <div class="col-md-6 text-right" style="margin-top: -5px">
+                      <img
+                        src="https://img.icons8.com/color/36/000000/visa.png"
+                      />
+                      <img
+                        src="https://img.icons8.com/color/36/000000/mastercard.png"
+                      />
+                      <img
+                        src="https://img.icons8.com/color/36/000000/amex.png"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body" style="height: 350px">
+                  <div class="form-group">
+                    <label for="cc-number" class="control-label"
+                      >CARD NUMBER</label
+                    >
+                    <input
+                      id="cc-number"
+                      type="text"
+                      class="input-lg form-control cc-number"
+                      autocomplete="cc-number"
+                      placeholder="&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;"
+                      required
+                      [(ngModel)]="card.cardno"
+                      #cardno="ngModel"
+                      maxlength="12"
+                      (keypress)="validateNo($event)"
+                    />
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="cc-exp" class="control-label"
+                          >CARD EXPIRY</label
+                        >
+                        <input
+                          id="cc-exp"
+                          type="text"
+                          class="input-lg form-control cc-exp"
+                          autocomplete="cc-exp"
+                          placeholder="&bull;&bull; / &bull;&bull;"
+                          required
+                          maxlength="4"
+                          (keypress)="validateNo($event)"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="cc-cvc" class="control-label"
+                          >CARD CVC</label
+                        >
+                        <input
+                          id="cc-cvc"
+                          type="tel"
+                          class="input-lg form-control cc-cvc"
+                          autocomplete="off"
+                          placeholder="&bull;&bull;&bull;"
+                          required
+                          maxlength="3"
+                          (keypress)="validateNo($event)"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="numeric" class="control-label"
+                      >CARD HOLDER NAME</label
+                    >
+                    <input
+                      type="text"
+                      class="input-lg form-control"
+                      required
+                      [(ngModel)]="card.name"
+                      #cname="ngModel"
+                    />
+                    <br />
+                    <small
+                      class="text-danger"
+                      [class.d-none]="cname.valid || cname.untouched"
+                    >
+                      Name is required.</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel id="static-3" title="Order">
+    <ng-template ngbPanelContent>
+      <div class="col-md-4 mb-4">
+        <div class="card mb-4">
+          <div class="card-header py-3">
+            <h5 class="mb-0">Summary</h5>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"
+              >
+                Products
+                <span>${{ totalPrice }}</span>
+              </li>
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center px-0"
+              >
+                Shipping
+                <span>$5</span>
+              </li>
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3"
+              >
+                <div>
+                  <strong>Total amount</strong>
+                  <strong>
+                    <p class="mb-0">(including VAT)</p>
+                  </strong>
+                </div>
+                <span
+                  ><strong>${{ totalPrice + 5 }}</strong></span
+                >
+              </li>
+            </ul>
+
+            <ng-template #content let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">
+                  Order Successful
+                </h4>
+                <button
+                  type="button"
+                  class="close"
+                  aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"
+                >
+                  <span aria-hidden="true"> × </span>
+                </button>
+              </div>
+              <div class="decor">
+                <ul class="list-group list-group-flush">
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"
+                  >
+                    Products
+                    <span>${{ totalPrice }}</span>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center px-0"
+                  >
+                    Shipping
+                    <span>$5</span>
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3"
+                  >
+                    <div>
+                      <strong>Total amount</strong>
+                      <strong>
+                        <p class="mb-0">(including VAT)</p>
+                      </strong>
+                    </div>
+                    <span
+                      ><strong>${{ totalPrice + 5 }}</strong></span
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-outline-dark"
+                  (click)="emptycart(content)"
+                >
+                  Go to Home
+                </button>
+              </div>
+            </ng-template>
+
+            <button
+              [disabled]="
+                AddressDetails.first == '' ||
+                AddressDetails.last == '' ||
+                AddressDetails.address == '' ||
+                AddressDetails.email == '' ||
+                AddressDetails.phone == 0 ||
+                card.cardno == '' ||
+                card.name == ''
+              "
+              class="btn btn-lg btn-outline-primary"
+              (click)="open(content)"
+            >
+              Place order
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

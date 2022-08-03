@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="text_center">
+    <h2>Retailer's Profile</h2>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-3">
+      <button
+        type="button"
+        routerLink="/retailer/{{ r_id }}"
+        class="btn btn-primary"
+      >
+        View Profile
+      </button>
+      <br /><br />
+      <button type="button" (click)="deleteRetailer()" class="btn btn-danger">
+        Delete Profile
+      </button>
+    </div>
+    <div class="col-md-8 deco">
+      <img
+        src="http://www.differencebetween.info/sites/default/files/images/3/retailer1.jpg"
+      /><br />
+      <button
+        routerLink="/add-product"
+        type="submit"
+        type="button"
+        class="btn btn-primary"
+      >
+        Add Products
+      </button>
+    </div>
+  </div>
+</div>

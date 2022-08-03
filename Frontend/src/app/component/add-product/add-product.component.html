@@ -1,0 +1,149 @@
+<div class="container">
+  <div class="bootstrap-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <mat-card>
+            <div class="container">
+              <div class="row">
+                <h1>ADD PRODUCT</h1>
+              </div>
+            </div>
+            <form #userform="ngForm" (ngSubmit)="formSubmit()">
+              <section>
+                <section class="child">Product Name :</section>
+              </section>
+              <br />
+
+              <section>
+                <input
+                  [(ngModel)]="product.title"
+                  name="title"
+                  class="form-control"
+                  type="text"
+                  placeholder="  Enter Product Name"
+                  required
+                  #title="ngModel"
+                />
+                <br />
+                <small
+                  class="text-danger"
+                  [class.d-none]="title.valid || title.untouched"
+                  >Title is required.</small
+                >
+              </section>
+              <br />
+              <section>
+                <section class="child">Product Price :</section>
+              </section>
+              <br />
+              <section>
+                <input
+                  [(ngModel)]="product.price"
+                  name="price"
+                  class="form-control"
+                  type="text"
+                  placeholder="   Enter Product Price"
+                  min="0"
+                  max="50"
+                  (keypress)="validateNo($event)"
+                  required
+                  #price="ngModel"
+                />
+                <br />
+
+                <small
+                  class="text-danger"
+                  [class.d-none]="price.valid || price.untouched"
+                  >Price is required.</small
+                >
+              </section>
+              <br />
+
+              <section>
+                <section class="child">Product Description :</section>
+              </section>
+              <br />
+              <section>
+                <input
+                  [(ngModel)]="product.description"
+                  name="description"
+                  class="form-control"
+                  type="text"
+                  placeholder="  Enter Product Description"
+                  minlength="10"
+                  required
+                  #desc="ngModel"
+                />
+                <br />
+                <small
+                  class="text-danger"
+                  [class.d-none]="desc.valid || desc.untouched"
+                  >Description should be greater than 10 words.</small
+                >
+              </section>
+              <br />
+
+              <section>
+                <section class="child">Product Category :</section>
+              </section>
+              <br />
+
+              <section>
+                <input
+                  [(ngModel)]="product.category"
+                  name="category"
+                  class="form-control"
+                  type="text"
+                  placeholder="  Enter Product Category"
+                  required
+                  #cat="ngModel"
+                />
+                <br />
+                <small
+                  class="text-danger"
+                  [class.d-none]="cat.valid || cat.untouched"
+                  >Category is required.</small
+                >
+              </section>
+              <br />
+
+              <section>
+                <section class="child">Product Image :</section>
+              </section>
+              <br />
+
+              <section>
+                <input
+                  [(ngModel)]="product.image"
+                  name="image"
+                  class="form-control"
+                  type="text"
+                  placeholder="  Image should be in URL"
+                  required
+                  #img="ngModel"
+                />
+                <br />
+                <small
+                  class="text-danger"
+                  [class.d-none]="img.valid || img.untouched"
+                  >Category is required.</small
+                >
+              </section>
+              <br />
+
+              <button
+                [disabled]="userform.form.invalid"
+                type="submit"
+                mat-raised-button
+                color="primary"
+              >
+                Add Product
+              </button>
+            </form>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="bootstrap-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <mat-card>
+            <div class="container">
+              <div class="row">
+                <h1>Add Retailer</h1>
+              </div>
+            </div>
+            <form (ngSubmit)="formSubmit()" #userForm="ngForm">
+              <section>
+                <section class="txt_field">Retailer id :</section>
+              </section>
+
+              <section>
+                <input
+                  [(ngModel)]="retailer.r_id"
+                  name="r_id"
+                  class="form-control"
+                  type="text"
+                  maxlength="5"
+                  (keypress)="validateNo($event)"
+                  placeholder="Enter Retailer id"
+                  required
+                  #rId="ngModel"
+                />
+                <br />
+                <small
+                  class="text-danger"
+                  [class.d-none]="rId.valid || rId.untouched"
+                  >Id is required and should be numbers.</small
+                >
+              </section>
+
+              <section>
+                <section class="txt_field">Retailer name :</section>
+              </section>
+
+              <section>
+                <input
+                  [(ngModel)]="retailer.name"
+                  name="name"
+                  class="form-control"
+                  type="text"
+                  placeholder="Enter Retailer name"
+                  required
+                  #name="ngModel"
+                />
+                <br />
+                <small
+                  class="text-danger"
+                  [class.d-none]="name.valid || name.untouched"
+                  >Name is required</small
+                >
+                <!-- <div *ngIf="!name?.valid && (name?.dirty || name?.touched)" class="error">
+        <div *ngIf="name.errors.pattern">Only characters are allowed</div>
+      </div> -->
+              </section>
+
+              <section>
+                <section class="txt_field">Retailer email :</section>
+              </section>
+              <section>
+                <input
+                  [(ngModel)]="retailer.email"
+                  name="email"
+                  class="form-control"
+                  type="email"
+                  placeholder="  Enter Retailer email"
+                  required
+                  #rEmail="ngModel"
+                  email
+                />
+                <br />
+                <small
+                  class="text-danger"
+                  [class.d-none]="rEmail.valid || rEmail.untouched"
+                  >Email is required</small
+                >
+                <small class="text-danger" *ngIf="rEmail.errors?.email">
+                  Primary Email not valid.
+                </small>
+              </section>
+              <section>
+                <section class="txt_field">Retailer password :</section>
+              </section>
+              <section>
+                <input
+                  [(ngModel)]="retailer.password"
+                  name="password"
+                  class="form-control"
+                  type="password"
+                  placeholder="  Enter Retailer password"
+                  #password="ngModel"
+                  required
+                  minlength="4"
+                />
+                <small
+                  class="text-danger"
+                  [class.d-none]="password.valid || password.untouched"
+                  >Password is required and should have atleast 4
+                  characters.</small
+                >
+              </section>
+
+              <button
+                class="signup_link"
+                type="submit"
+                mat-raised-button
+                color="primary"
+                router-link="/retailer"
+                style="color: white"
+                [disabled]="userForm.form.invalid"
+              >
+                Add-Retailer
+              </button>
+            </form>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

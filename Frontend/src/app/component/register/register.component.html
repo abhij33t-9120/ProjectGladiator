@@ -1,0 +1,95 @@
+<br />
+<br />
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <mat-card>
+          <div class="container text-center">
+            <img src="../../../assets/logo.png" width="60" height="60" alt="" />
+          </div>
+
+          <h1 class="text-center">Register Here !!</h1>
+
+          <form (ngSubmit)="formSubmit()" #userForm="ngForm">
+            <mat-form-field class="full-width app" appearance="outline">
+              <label>User Name</label>
+              <input
+                required
+                [(ngModel)]="user.name"
+                name="name"
+                class="form-control"
+                placeholder="Enter here"
+                required
+                #name="ngModel"
+              />
+              <small
+                class="text-danger"
+                [class.d-none]="name.valid || name.untouched"
+                >Name is required</small
+              >
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <label>User Password</label>
+              <input
+                required
+                [(ngModel)]="user.password"
+                name="password"
+                type="password"
+                class="form-control"
+                placeholder="Enter here"
+                #password="ngModel"
+                required
+                minlength="4"
+              />
+              <small
+                class="text-danger"
+                [class.d-none]="password.valid || password.untouched"
+                >Password is required and should have atleast 4
+                characters.</small
+              >
+            </mat-form-field>
+
+            <br />
+
+            <mat-form-field class="full-width" appearance="outline">
+              <label>User Email</label>
+              <input
+                required
+                [(ngModel)]="user.email"
+                name="email"
+                type="email"
+                class="form-control"
+                placeholder="Enter here"
+                required
+                #rEmail="ngModel"
+                email
+              />
+
+              <small
+                class="text-danger"
+                [class.d-none]="rEmail.valid || rEmail.untouched"
+                >Email is required</small
+              >
+              <small class="text-danger" *ngIf="rEmail.errors?.email">
+                Primary Email not valid.
+              </small>
+            </mat-form-field>
+
+            <!-- <div class="container text-center"> -->
+            <button
+              type="submit"
+              mat-raised-button
+              color="primary"
+              [disabled]="userForm.form.invalid"
+            >
+              Register
+            </button>
+            <!-- </div> -->
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
