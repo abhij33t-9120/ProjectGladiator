@@ -1,6 +1,6 @@
 # ProjectGladiator
 ## Project on Online Shopping
-** Team Members :- **
+### Team Members :- 
   * Abhijeet Karmakar (lead)
   * Mehul Kulshrestha
   * Sandeep Santhosh
